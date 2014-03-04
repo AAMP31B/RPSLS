@@ -2,7 +2,7 @@ package rpsls;
 import java.util.*;
 
 public class RPSLS {
-
+//Built so that main just calls LetsPlay() and game starts.
 	private static int RNG(){
 		Random die = new Random();
 		int roll = die.nextInt(5)+1; //computers roll between 1 and 5
