@@ -2,15 +2,15 @@ package rpsls;
 import java.util.*;
 
 public class RPSLS {
-//Built so that main just calls LetsPlay() and game starts.
+//Built so that a main just calls LetsPlay() and game starts.
 	private static int RNG(){
-		Random die = new Random();
+		Random die = new Random(); //creates Random object
 		int roll = die.nextInt(5)+1; //computers roll between 1 and 5
-		return roll;
+		return roll; //sends the roll result back to calling method
 	}
 	
 	private static int UserGuess(Scanner keyboard){
-		int userSelection = 0;
+		int userSelection = 0; //initialized variable to hold an int for the user selection
 
 		System.out.print("Please enter your selection of Rock, Paper, Scissors, Lizard, or Spock: ");
 		String answer = keyboard.nextLine();
@@ -28,28 +28,28 @@ public class RPSLS {
 		else
 		{
 			System.out.println("You entered an invalid selection");
-			RPSLS.Again(keyboard);
+			RPSLS.Again(keyboard); //if answer isn't one of the above it starts the play again method
 		}	
-		return userSelection;
+		return userSelection; //sends int for the user's choice back to calling method
 	}
 	
 	public static void LetsPlay(){
-		System.out.println("Welcome to RPSLS.");
-		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Welcome to RPSLS."); //core of the game, could be used as a main method if so declared
+		Scanner keyboard = new Scanner(System.in); //Scanner object to read keyboard inputs
 		System.out.println("Let's get started.");
 			
 		
-		int userSelection = UserGuess(keyboard);
-		int computerGuess = RPSLS.RNG();
+		int userSelection = UserGuess(keyboard); //calls UserGuess method and passes in the Scanner object
+		int computerGuess = RPSLS.RNG(); //calls the random method to generate computer guesses
 		
-		Compare(userSelection, computerGuess, keyboard);
-		RPSLS.Again(keyboard);
+		Compare(userSelection, computerGuess, keyboard); //passes both the user and computer guesses into compare method for results
+		RPSLS.Again(keyboard); // after compare prints out results the program comes back here to ask if user wants to play again
 	}
 	
 	private static void Compare(int user, int computer, Scanner keyboard){
-		if (user == computer)
-			System.out.println("Draw! You both selected the same item!");
-		else if (user == 1 && computer == 4)
+		if (user == computer)//This if statement takes care of 5 seperate statements in one line!
+			System.out.println("Draw! You both selected the same item!");//the rest just compare the results and whenever it finds a match
+		else if (user == 1 && computer == 4)//the program prints a result and then jumps back to the LetsPlay method to ask for another game
 			System.out.println("Your rock smashes the lizard!");
 		else if (user == 1 && computer == 3)
 			System.out.println("Your rock smashes the scissors!");
@@ -92,8 +92,8 @@ public class RPSLS {
 	}
 	
 	private static void Again(Scanner keyboard){
-		System.out.println("Do you wish to play again? ");
-		System.out.print("Enter Yes or No: ");
+		System.out.println("Do you wish to play again? ");//asks if the user wants to play again
+		System.out.print("Enter Yes or No: "); //calls LetsPlay method if yes, if not exits.
 		String again = keyboard.nextLine();
 		if (again.equalsIgnoreCase("Yes"))
 		{
